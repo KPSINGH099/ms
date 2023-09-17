@@ -1,0 +1,66 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "mq",
+    "dateExported": "2023-09-17T13:48:16.851Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "51144060-afc5-4187-ac2c-df4f19738acf",
+            "colId": "ca091d77-213c-4271-ab39-2611f298826d",
+            "containerId": "",
+            "name": "producer",
+            "url": "http://localhost:3000/sendLog",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-09-17T07:55:27.742Z",
+            "modified": "2023-09-17T13:35:37.183Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"logType\":\"info\",\n  \"message\":\"info\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f9b62f31-1efa-4495-b952-41b488ae7445",
+            "colId": "ca091d77-213c-4271-ab39-2611f298826d",
+            "containerId": "",
+            "name": "producer-sends-warning",
+            "url": "http://localhost:3000/sendLog",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-09-17T13:38:04.888Z",
+            "modified": "2023-09-17T13:38:04.888Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"logType\":\"Warning\",\n  \"message\":\"warning!!!!!!!!!!!!!!!!\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a92ec671-8ee6-4b6a-86a8-5050f4ab915c",
+            "colId": "ca091d77-213c-4271-ab39-2611f298826d",
+            "containerId": "",
+            "name": "producer-sends-error",
+            "url": "http://localhost:3000/sendLog",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-09-17T13:38:56.707Z",
+            "modified": "2023-09-17T13:38:56.707Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"logType\":\"Error\",\n  \"message\":\"errrrr!!!!!!!!!!!!!!!!\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

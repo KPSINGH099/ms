@@ -1,0 +1,133 @@
+different microsevices communicate through rabbitmq 
+
+it is message broker software 
+
+a message broker software allows applications and system to communicate with each other and exchange the information 
+
+it is also know as message q software 
+
+we push messages to queqe where they will be stored untill they are processed or consume 
+
+ms1------->rabbit mq---------->ms2
+
+**************************************************************************************
+
+process involved 
+
+1. producer produces message to the mq broker 
+
+2. Rabbit mq consist of exchange and the queq
+   i).  role of the exchange to route that message to the specific route 
+   ii). as soon as message come to queq consumer will consume it 
+
+there are diifernt differtn type of routing 
+
+there is guarantee of message is going to be deliver 
+let say if consumer is down then our message will be stored in queq
+
+acknoledge signal can be send to producer so that it can know that message has been delivered 
+
+rabbitmq supports asyn and sync both way 
+
+
+**********************************************************************************************
+
+how exchange knows which message to be route which route 
+
+connection between exchange and queque called binding 
+
+********************************************************************
+
+biding is a relationship or the connection 
+
+routing key :{hii}  binding key:{hi}
+
+roting key is matched with binding key   
+
+
+**********************************************************************************
+
+in case of fanout exchange we dont need routing or binding key 
+
+if we have routing key then it will be simply ignored and messages will be broadcasted to all
+
+************************************************************************************
+
+topic exchange 
+
+dot is used to create pattern 
+
+***********************************************
+
+zoom and look at binding keys 
+
+BMW.bike.*  
+      
+Ferrari.#
+
+*.car.*
+
+
+
+****************************************************************************
+
+
+locahost : 15672
+
+npm install amqlib (advance message queqing protocol)
+
+we dont want to create new channel for every single message we publish we only want to work with one channel 
+*******************************************************
+we create connection than on that connection we create channel
+
+config.json
+
+class producer{
+channel;   //
+
+asunv createChannel(){
+//create connection
+
+//on that coonection we create new channel
+
+
+}
+
+async publismessage(routingKey,message){
+//if channel does not exist create channel
+if(!this.channel){
+
+}
+//create exchange
+
+// to do so there is function which is available on amqlib package
+
+//which is async in nature so to call that use await before that 
+
+//to make sure we are working on same channel we call this function on channel which we created
+
+//
+await this.channle.assertExchange()
+//first parameter is exchangename ,
+//2nd parameter is exchange type
+
+
+//publish message is called on our channel to publish our message in channel
+
+//1st parameter is exchange name ,  2nd routing key , 3rd buffer of our string message
+await this.channel.publish(excName,direct,
+buffer.from(JSON.Stringfy(
+{
+//object has logtype which is same as routing key
+logtype:routingkey,
+message:message,
+date
+})));
+}
+
+//export that class
+
+
+**********************************************************************
+
+
